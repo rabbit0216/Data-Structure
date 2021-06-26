@@ -50,22 +50,23 @@ public:
 			pre = pre->next;
 		tmp = pre->next; //삭제할 노드
 		pre->next = tmp->next;  //삭제할 노드 앞의 노드와 삭제할 노드 뒤의 노드 연결
+		if (tmp == tail) {
+			tail = pre;
+		}
 		n -= 1;
-
 		//내가 오류가 계속 났던 이유가 굳이 메모리 해제 해서임. 메모리 해제하지말고 그냥 다음 노드랑 이어버리면 어차피 해제하지 않아도 해당 노드는 무시됨
+		//자꾸 wrong answer 뜬 이유 : tail 삭제되었을 경우 tail을 앞의 노드로 설정 안해줘서 tail 다음 노드가 유실? 됨
 	}
 
 	void showList() { 
-		if (tail == nullptr)
-			cout << "-1" << endl;
-		else {
-			Node* cur = tail;
-			for (int i = 0;i < n;i++) {
-				cur = cur->next; //tail다음 노드인 첫번째 노드부터
-				cout << cur->data << ' ';
-			}
-			cout << endl;
+		Node* cur = tail;
+		for (int i = 0;i < n;i++) {
+			cur = cur->next; //tail다음 노드인 첫번째 노드부터
+			cout << cur->data;
+			if (i != (n - 1))
+				cout << ' ';
 		}
+		cout << '\n';
 	}
 };
 
