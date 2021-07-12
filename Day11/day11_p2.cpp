@@ -126,7 +126,7 @@ public:
 
 	Node* findMin(Node* x) {
 		Node* tmp = x;
-		while (tmp->left != nullptr)
+		while (tmp != nullptr)
 			tmp = tmp->left;
 		return tmp;
 	}
